@@ -40,6 +40,8 @@ const buildSetup = () => {
   fs.mkdirSync(buildDir);
   fs.mkdirSync(`${buildDir}/json`);
   fs.mkdirSync(`${buildDir}/images`);
+  fs.mkdirSync(`${buildDir}/assets`);
+
   if (gif.export) {
     fs.mkdirSync(`${buildDir}/gifs`);
   }
@@ -113,6 +115,11 @@ const layersSetup = (layersOrder) => {
 const saveImage = (_editionCount) => {
   fs.writeFileSync(
     `${buildDir}/images/${_editionCount}.png`,
+    canvas.toBuffer("image/png")
+  );
+
+  fs.writeFileSync(
+    `${buildDir}/assets/${_editionCount}.png`,
     canvas.toBuffer("image/png")
   );
 };
@@ -314,8 +321,14 @@ const saveMetaDataSingleFile = (_editionCount) => {
         `Writing metadata for ${_editionCount}: ${JSON.stringify(metadata)}`
       )
     : null;
+
   fs.writeFileSync(
     `${buildDir}/json/${_editionCount}.json`,
+    JSON.stringify(metadata, null, 2)
+  );
+
+  fs.writeFileSync(
+    `${buildDir}/assets/${_editionCount}.json`,
     JSON.stringify(metadata, null, 2)
   );
 };
