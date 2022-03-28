@@ -33,11 +33,6 @@ const HashlipsGiffer = require(`${basePath}/modules/HashlipsGiffer.js`);
 
 let hashlipsGiffer = null;
 
-/// MY MODIFICATIONS
-const rootPath = basePath.split("/").slice(0, -1).join("/");
-const projectName = process.argv[2];
-const projectAssetsPath = `${rootPath}/projects/${projectName}/assets`;
-
 const buildSetup = () => {
   if (fs.existsSync(buildDir)) {
     fs.rmdirSync(buildDir, { recursive: true });
@@ -123,12 +118,10 @@ const saveImage = (_editionCount) => {
     canvas.toBuffer("image/png")
   );
 
-  if (projectName) {
-    fs.writeFileSync(
-      `${projectAssetsPath}/${_editionCount}.png`,
-      canvas.toBuffer("image/png")
-    );
-  }
+  fs.writeFileSync(
+    `${buildDir}/assets/${_editionCount}.png`,
+    canvas.toBuffer("image/png")
+  );
 };
 
 const genColor = () => {
@@ -334,12 +327,10 @@ const saveMetaDataSingleFile = (_editionCount) => {
     JSON.stringify(metadata, null, 2)
   );
 
-  if (projectName) {
-    fs.writeFileSync(
-      `${projectAssetsPath}/${_editionCount}.json`,
-      JSON.stringify(metadata, null, 2)
-    );
-  }
+  fs.writeFileSync(
+    `${buildDir}/assets/${_editionCount}.json`,
+    JSON.stringify(metadata, null, 2)
+  );
 };
 
 function shuffle(array) {
