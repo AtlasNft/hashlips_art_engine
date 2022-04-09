@@ -113,14 +113,14 @@ const layersSetup = (layersOrder) => {
 };
 
 const saveImage = (_editionCount) => {
-  fs.writeFileSync(
-    `${buildDir}/images/${_editionCount}.png`,
-    canvas.toBuffer("image/png")
-  );
+  // fs.writeFileSync(
+  //   `${buildDir}/images/${_editionCount}.png`,
+  //   canvas.toBuffer("image/png", { resolution: 300 })
+  // );
 
   fs.writeFileSync(
     `${buildDir}/assets/${_editionCount}.png`,
-    canvas.toBuffer("image/png")
+    canvas.toBuffer("image/png", { resolution: 300 })
   );
 };
 
@@ -322,10 +322,10 @@ const saveMetaDataSingleFile = (_editionCount) => {
       )
     : null;
 
-  fs.writeFileSync(
-    `${buildDir}/json/${_editionCount}.json`,
-    JSON.stringify(metadata, null, 2)
-  );
+  // fs.writeFileSync(
+  //   `${buildDir}/json/${_editionCount}.json`,
+  //   JSON.stringify(metadata, null, 2)
+  // );
 
   fs.writeFileSync(
     `${buildDir}/assets/${_editionCount}.json`,

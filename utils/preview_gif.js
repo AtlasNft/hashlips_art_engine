@@ -3,6 +3,7 @@ const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const buildDir = `${basePath}/build`;
 const imageDir = `${buildDir}/images`;
+const assetsDir = `${buildDir}/assets`;
 const { format, preview_gif } = require(`${basePath}/src/config.js`);
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -19,9 +20,27 @@ const loadImg = async (_img) => {
 
 // read image paths
 const imageList = [];
-const rawdata = fs.readdirSync(imageDir).forEach((file) => {
-  imageList.push(loadImg(`${imageDir}/${file}`));
-});
+// const rawdata = fs.readdirSync(assetsDir).forEach((file, index) => {
+//   const [, ext] = file.split(".");
+//   if (ext === "png") {
+//     imageList.push(loadImg(`${assetsDir}/${file}`));
+//   }
+
+//   if (index >= 100) return;
+// });
+
+const rawdata = fs.readdirSync(assetsDir);
+
+for (let i = 0; i < rawdata.length; i++) {
+  const file = rawdata[i];
+  const [, ext] = file.split(".");
+
+  if (ext === "png") {
+    imageList.push(loadImg(`${assetsDir}/${file}`));
+  }
+
+  if (i >= 100) break;
+}
 
 const saveProjectPreviewGIF = async (_data) => {
   // Extract from preview config
