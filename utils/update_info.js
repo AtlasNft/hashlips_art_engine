@@ -19,13 +19,14 @@ data.forEach((item) => {
     item.name = `${namePrefix} #${item.edition}`;
     item.description = description;
     item.creators = solanaMetadata.creators;
+    item.seller_fee_basis_points = solanaMetadata.seller_fee_basis_points;
   } else {
     item.name = `${namePrefix} #${item.edition}`;
     item.description = description;
     item.image = `${baseUri}/${item.edition}.png`;
   }
   fs.writeFileSync(
-    `${basePath}/build/json/${item.edition}.json`,
+    `${basePath}/build/assets/${item.edition}.json`,
     JSON.stringify(item, null, 2)
   );
 });
