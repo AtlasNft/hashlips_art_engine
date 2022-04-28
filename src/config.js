@@ -5,17 +5,17 @@ const { NETWORK } = require(`${basePath}/constants/network.js`);
 const network = NETWORK.sol;
 
 // General metadata for Ethereum
-const namePrefix = "My Eyes test collection";
-const description = "This is a description for my test Eyes collection";
-const baseUri = "ipfs://NewUriToReplace";
+const namePrefix = 'My Eyes test collection';
+const description = 'This is a description for my test Eyes collection';
+const baseUri = 'ipfs://NewUriToReplace';
 
 const solanaMetadata = {
-  symbol: "YC",
+  symbol: 'YC',
   seller_fee_basis_points: 1000, // Define how much % you want from secondary market sales 1000 = 10%
-  external_url: "https://www.youtube.com/c/hashlipsnft",
+  external_url: 'https://www.youtube.com/c/hashlipsnft',
   creators: [
     {
-      address: "8SAaD8QnFe2BhVj4HJE5UdmGQpnW7L6ve87kfriktbr5",
+      address: '8SAaD8QnFe2BhVj4HJE5UdmGQpnW7L6ve87kfriktbr5',
       share: 100,
     },
   ],
@@ -26,13 +26,13 @@ const layerConfigurations = [
   {
     growEditionSizeTo: 10,
     layersOrder: [
-      { name: "Background" },
-      { name: "Eyeball" },
-      { name: "Eye color" },
-      { name: "Iris" },
-      { name: "Shine" },
-      { name: "Bottom lid" },
-      { name: "Top lid" },
+      { name: 'Background' },
+      { name: 'Eyeball' },
+      { name: 'Eye color' },
+      { name: 'Iris' },
+      { name: 'Shine' },
+      { name: 'Bottom lid' },
+      { name: 'Top lid' },
     ],
   },
 ];
@@ -42,9 +42,9 @@ const shuffleLayerConfigurations = false;
 const debugLogs = false;
 
 const format = {
-  width: 512,
-  height: 512,
-  smoothing: false,
+  width: 1080,
+  height: 1080,
+  smoothing: true,
 };
 
 const gif = {
@@ -56,15 +56,15 @@ const gif = {
 
 const text = {
   only: false,
-  color: "#ffffff",
+  color: '#ffffff',
   size: 20,
   xGap: 40,
   yGap: 40,
-  align: "left",
-  baseline: "top",
-  weight: "regular",
-  family: "Courier",
-  spacer: " => ",
+  align: 'left',
+  baseline: 'top',
+  weight: 'regular',
+  family: 'Courier',
+  spacer: ' => ',
 };
 
 const pixelFormat = {
@@ -73,14 +73,14 @@ const pixelFormat = {
 
 const background = {
   generate: true,
-  brightness: "80%",
+  brightness: '80%',
   static: false,
-  default: "#000000",
+  default: '#000000',
 };
 
 const extraMetadata = {};
 
-const rarityDelimiter = "#";
+const rarityDelimiter = '#';
 
 const uniqueDnaTorrance = 10000;
 
@@ -88,16 +88,16 @@ const preview = {
   thumbPerRow: 5,
   thumbWidth: 50,
   imageRatio: format.height / format.width,
-  imageName: "preview.png",
+  imageName: 'preview.png',
 };
 
 const preview_gif = {
-  numberOfImages: 5,
-  order: "ASC", // ASC, DESC, MIXED
+  numberOfImages: 15,
+  order: 'ASC', // ASC, DESC, MIXED
   repeat: 0,
   quality: 100,
   delay: 500,
-  imageName: "preview.gif",
+  imageName: 'preview.gif',
 };
 
 module.exports = {
